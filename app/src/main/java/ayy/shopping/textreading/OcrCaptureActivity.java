@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ayy.shopping.ocrreader;
+package ayy.shopping.textreading;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -26,7 +26,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.hardware.Camera;
-import android.os.Build;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.support.annotation.NonNull;
@@ -46,9 +45,9 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import ayy.shopping.R;
-import ayy.shopping.ocrreader.ui.camera.CameraSource;
-import ayy.shopping.ocrreader.ui.camera.CameraSourcePreview;
-import ayy.shopping.ocrreader.ui.camera.GraphicOverlay;
+import ayy.shopping.textreading.ui.camera.CameraSource;
+import ayy.shopping.textreading.ui.camera.CameraSourcePreview;
+import ayy.shopping.textreading.ui.camera.GraphicOverlay;
 
 import java.io.IOException;
 import java.util.Locale;

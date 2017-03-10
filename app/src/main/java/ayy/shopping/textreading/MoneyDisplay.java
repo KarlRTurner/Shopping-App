@@ -1,4 +1,4 @@
-package ayy.shopping.ocrreader;
+package ayy.shopping.textreading;
 
 import android.content.Intent;
 import android.os.Bundle;

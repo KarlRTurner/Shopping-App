@@ -14,14 +14,14 @@
         <activity android:name=".MainActivity">
         </activity>
 
-        <activity android:name=".ocrreader.OcrCaptureActivity">
+        <activity android:name=".textreading.OcrCaptureActivity">
             <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ocrreader.MoneyDisplay"></activity>
+        <activity android:name=".textreading.MoneyDisplay"></activity>
     </application>
 
 </manifest>

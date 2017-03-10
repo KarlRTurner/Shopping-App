@@ -13,16 +13,15 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package ayy.shopping.ocrreader;
+package ayy.shopping.textreading;
 
-import android.content.Intent;
 import android.util.Log;
 import android.util.SparseArray;
 
-import ayy.shopping.ocrreader.ui.camera.GraphicOverlay;
+import ayy.shopping.textreading.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
-import android.content.Intent;
+
 import android.content.Context;
 
 /**
