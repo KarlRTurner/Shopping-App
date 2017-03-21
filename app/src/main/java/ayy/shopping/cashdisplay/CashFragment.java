@@ -9,14 +9,13 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ImageView;
 
 import ayy.shopping.R;
 
 // Instances of this class are fragments representing a single
 // object in our collection.
-public class CashFragment extends Fragment {
-    public static final String ARG_OBJECT = "object";
+public  class CashFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -25,7 +24,8 @@ public class CashFragment extends Fragment {
         // properly.
         View rootView = inflater.inflate(R.layout.cash_fragment, container, false);
         Bundle args = getArguments();
-        ((TextView) rootView.findViewById(R.id.txt1)).setText(Integer.toString(1234567890));
+
+        ((ImageView) rootView.findViewById(R.id.cashpic)).setImageResource(args.getInt("o"));
 
         return rootView;
     }
