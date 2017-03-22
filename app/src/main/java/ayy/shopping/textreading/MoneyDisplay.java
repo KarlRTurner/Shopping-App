@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import ayy.shopping.R;
+import ayy.shopping.textreading.OcrCaptureActivity;
 
 /**
  * Created by acale on 02/03/2017.

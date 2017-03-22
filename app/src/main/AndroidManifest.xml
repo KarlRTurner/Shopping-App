@@ -14,16 +14,16 @@
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".textreading.OcrCaptureActivity">
-
-        </activity>
-        <activity android:name=".textreading.MoneyDisplay" />
-        <activity android:name=".cashdisplay.CashDisplay">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".textreading.MoneyDisplay" />
+        <activity android:name=".cashdisplay.CashDisplay">
+        </activity>
+        <activity android:name=".entering.EnterAmountActivity"/>
     </application>
 
 </manifest>

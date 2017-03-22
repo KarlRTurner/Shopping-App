@@ -26,10 +26,22 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true">
 
+        <Button
+            android:id="@+id/enterAmount"
+            android:text="Tap To Enter Amount"
+            android:background="#fcfc00"
+            android:textColor="@android:color/black"
+            android:textSize="24sp"
+            android:layout_height="50dp"
+            android:layout_gravity="top"
+            android:layout_width="400dp"
+            android:layout_weight="1" />
+
         <ImageButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@null"
+            android:id="@+id/captureBtn"
             android:src="@drawable/camera"
             android:layout_alignParentBottom="true"
             android:layout_centerHorizontal="true"

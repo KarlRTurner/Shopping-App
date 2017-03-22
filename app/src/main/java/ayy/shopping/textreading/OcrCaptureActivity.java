@@ -37,6 +37,8 @@ import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.ScaleGestureDetector;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -45,6 +47,8 @@ import com.google.android.gms.vision.text.TextBlock;
 import com.google.android.gms.vision.text.TextRecognizer;
 
 import ayy.shopping.R;
+import ayy.shopping.cashdisplay.CashDisplay;
+import ayy.shopping.entering.EnterAmountActivity;
 import ayy.shopping.textreading.ui.camera.CameraSource;
 import ayy.shopping.textreading.ui.camera.CameraSourcePreview;
 import ayy.shopping.textreading.ui.camera.GraphicOverlay;
@@ -96,6 +100,27 @@ public final class OcrCaptureActivity extends AppCompatActivity {
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay<OcrGraphic>) findViewById(R.id.graphicOverlay);
 
+        final Button enterAmount;
+        enterAmount = (Button)findViewById(R.id.enterAmount);
+        enterAmount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Text to speech on button press
+                tts = new TextToSpeech(OcrCaptureActivity.this, new TextToSpeech.OnInitListener() {
+                    //Getting text from the button and storing it in s
+                    String s=enterAmount.getText().toString();
+                    @Override
+                    public void onInit(int status) {
+                        //Instead of using the text in the button we are using our own message
+                        tts.speak("Instead of Taking a picture" +
+                                "You can type in the price below", TextToSpeech.QUEUE_FLUSH, null);
+                    }
+                });
+                Intent intent = new Intent(OcrCaptureActivity.this, EnterAmountActivity.class);
+                startActivity(intent);
+            }
+        });
+
         // Set good defaults for capturing text.
         boolean autoFocus = true;
         boolean useFlash = false;
@@ -130,6 +155,16 @@ public final class OcrCaptureActivity extends AppCompatActivity {
                     }
                 };
         tts = new TextToSpeech(this.getApplicationContext(), listener);
+
+        ImageButton button = (ImageButton)findViewById(R.id.captureBtn);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                Intent i = new Intent(OcrCaptureActivity.this , CashDisplay.class);
+
+                startActivity(i);
+            }
+        });
+
     }
 
     /**
