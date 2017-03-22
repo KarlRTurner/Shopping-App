@@ -11,6 +11,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class CashDisplay extends FragmentActivity {
     PagerAdapter mPagerAdapter;
     ViewPager mViewPager;
     HashMap<Float, Integer> pics;
-    SparseArray<Float> cash;
+    ArrayList<Float> cash;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +32,10 @@ public class CashDisplay extends FragmentActivity {
         setContentView(R.layout.activity_cash_display);
 
         pics = new HashMap<Float, Integer>();
-        cash = new SparseArray<Float>();
+        cash = new ArrayList<Float>();
 
         pics.put(0.50f , R.drawable.fiftycent);
-        pics.put(1.05f , R.drawable.one);
+        pics.put(1.0f , R.drawable.one);
         pics.put(2.0f , R.drawable.two);
         pics.put(5f , R.drawable.five);
         pics.put(10f , R.drawable.ten);
@@ -43,7 +44,7 @@ public class CashDisplay extends FragmentActivity {
         pics.put(100f , R.drawable.onehundred);
 
         for(int j =0 ; j < 10 ; j++ ) {
-            cash.put(j, 10f);
+            cash.add(10f);
         }
 
 
