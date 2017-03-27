@@ -1,5 +1,6 @@
 package ayy.shopping.cashdisplay;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -10,12 +11,15 @@ import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
 import ayy.shopping.R;
+import ayy.shopping.textreading.OcrCaptureActivity;
 
 import static android.R.attr.button;
 
@@ -31,8 +35,7 @@ public class CashDisplay extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_cash_display);
 
-        pics = new HashMap<Float, Integer>();
-        cash = new ArrayList<Float>();
+        pics = new HashMap<>();
 
         pics.put(0.50f , R.drawable.fiftycent);
         pics.put(1.0f , R.drawable.one);
@@ -43,9 +46,30 @@ public class CashDisplay extends FragmentActivity {
         pics.put(50f , R.drawable.fifty);
         pics.put(100f , R.drawable.onehundred);
 
-        for(int j =0 ; j < 10 ; j++ ) {
+        cash = new ArrayList<>();
+
+        Intent intent = getIntent();
+        int euro = Integer.parseInt(intent.getStringExtra("euromsg"));
+        int cent = Integer.parseInt(intent.getStringExtra("centmsg"));
+
+        if (euro < 5 ){
+            cash.add(5f);
+        }
+        else if (euro > 5 && euro < 11){
             cash.add(10f);
         }
+        else if (euro > 10 && euro <20){
+            cash.add(20f);
+        }
+
+
+        //((TextView) findViewById(R.id.payable)).setText(euro + "." + cent);
+
+
+
+        /*for(int j =0 ; j < 10 ; j++ ) {
+            cash.add(10f);
+        }*/
 
 
         mPagerAdapter = new PagerAdapter(getSupportFragmentManager());
@@ -70,7 +94,7 @@ public class CashDisplay extends FragmentActivity {
 
         @Override
         public Fragment getItem(int i) {
-            if (mViewPager.getCurrentItem() < cash.size() - 1){
+            if (mViewPager.getCurrentItem() <= cash.size() - 1){
                 Fragment fragment = new CashFragment();
                 Bundle args = new Bundle();
 

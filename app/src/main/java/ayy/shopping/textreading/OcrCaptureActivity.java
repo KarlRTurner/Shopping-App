@@ -387,11 +387,15 @@ public final class OcrCaptureActivity extends AppCompatActivity {
                 Log.d(TAG, "text data is being spoken! " + text.getValue());
                 // Speak the string.
                 tts.speak(text.getValue(), TextToSpeech.QUEUE_ADD, null, "DEFAULT");
-
-                Intent intent  = new Intent(this, MoneyDisplay.class);
-
                 String message = text.getValue();
-                intent.putExtra(EXTRA_MESSAGE, message);
+
+                String[] parts = message.split("\\.");
+                String euro = parts[0];
+                String cent = parts[1];
+
+                Intent intent  = new Intent(this, CashDisplay.class);
+                intent.putExtra("euromsg", euro);
+                intent.putExtra("centmsg", cent);
                 startActivity(intent);
             }
             else {

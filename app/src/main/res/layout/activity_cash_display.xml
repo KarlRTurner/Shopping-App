@@ -44,6 +44,7 @@
         android:layout_height="wrap_content"
         android:text="@string/pay"
         android:layout_marginTop="12dp"
+        android:id="@+id/payable"
         android:textSize="25sp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
