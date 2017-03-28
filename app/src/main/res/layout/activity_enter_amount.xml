@@ -1,112 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_enter_amount"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="ayy.shopping.entering.EnterAmountActivity">
-
-    <ImageView
-        android:layout_width="500dp"
-        app:srcCompat="@drawable/white"
-        android:id="@+id/imageView3"
-        android:layout_height="400dp"
-        android:layout_below="@+id/enterAmount2"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:id="@+id/enterAmount2"
-        android:text="Enter Amount"
-        android:background="#fcfc00"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
+        android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="top"
-        android:layout_width="match_parent"
-        android:layout_weight="1" />
+        android:background="@color/colorPrimary"
+        android:text="Enter Amount"
+        android:textColor="@android:color/black"
+        android:textSize="24sp" />
 
     <Button
-        android:text="Clear"
-        android:layout_height="wrap_content"
         android:id="@+id/clearBtn"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:background="@android:color/holo_red_dark"
-        android:textSize="30sp"
-        android:textStyle="normal|bold"
-        android:layout_marginStart="22dp"
-        android:layout_centerVertical="true"
-        android:layout_alignParentStart="true"
-        android:layout_width="125dp" />
-
-    <EditText
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        android:maxLength="3"
-        android:ems="10"
-        android:layout_marginBottom="25dp"
-        android:id="@+id/euroTxt"
-        android:hint="EURO"
-        android:cursorVisible="false"
-        android:layout_above="@+id/clearBtn"
-        android:layout_alignStart="@+id/clearBtn"
         android:layout_width="125dp"
-        android:singleLine="false"
-        android:selectAllOnFocus="false" />
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="23dp"
+        android:background="@color/red"
+        android:text="Clear"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="normal|bold" />
 
     <Button
-        android:text="Submit"
-        android:layout_height="wrap_content"
         android:id="@+id/submitBtn"
-        android:textSize="30sp"
-        android:textColor="@color/common_google_signin_btn_text_dark_focused"
-        android:textStyle="normal|bold"
-        android:background="@android:color/holo_green_light"
         android:layout_width="125dp"
+        android:layout_height="wrap_content"
         android:layout_marginEnd="26dp"
-        android:layout_alignBaseline="@+id/clearBtn"
-        android:layout_alignBottom="@+id/clearBtn"
+        android:background="@color/green"
+        android:text="Submit"
+        android:textColor="@color/black"
+        android:textSize="30sp"
+        android:textStyle="normal|bold"
+        android:layout_below="@+id/euroTxt"
         android:layout_alignParentEnd="true" />
 
     <EditText
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:id="@+id/centTxt"
-        android:hint="CENT"
-        android:textSize="40sp"
-        android:textStyle="normal|bold"
-        android:textAlignment="viewStart"
-        android:textColor="?android:attr/textColorAlertDialogListItem"
-        android:cursorVisible="false"
+        android:id="@+id/euroTxt"
         android:layout_width="125dp"
-        android:layout_alignBaseline="@+id/euroTxt"
-        android:layout_alignBottom="@+id/euroTxt"
-        android:layout_alignStart="@+id/submitBtn"
-        android:singleLine="true"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:ems="10"
+        android:hint="€ Euro"
         android:inputType="number"
-        android:maxLength="2"/>
+        android:maxLength="3"
+        android:maxLines="1"
+        android:textSize="40sp"
+        android:selectAllOnFocus="false"
+        android:textStyle="normal|bold"
+        android:layout_above="@+id/clearBtn"
+        android:layout_alignStart="@+id/clearBtn" />
 
     <ImageButton
+        android:id="@+id/captureBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@null"
-        android:id="@+id/captureBtn"
         android:src="@drawable/camera"
+        android:layout_marginEnd="9dp"
+        android:layout_marginBottom="23dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignStart="@+id/clearBtn"
-        android:layout_marginBottom="7dp" />
+        android:layout_alignEnd="@+id/clearBtn" />
 
     <ImageView
+        android:id="@+id/speakBtn"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:srcCompat="@drawable/mic"
-        android:layout_alignEnd="@+id/submitBtn"
-        android:id="@+id/speakBtn"
-        android:layout_alignTop="@+id/captureBtn"
+        android:layout_alignBottom="@+id/captureBtn"
+        android:layout_alignStart="@+id/submitBtn" />
+
+    <EditText
+        android:id="@+id/centTxt"
+        android:layout_width="125dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Cent c"
+        android:inputType="number"
+        android:maxLength="2"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textColor="?android:attr/textColorAlertDialogListItem"
+        android:textSize="40sp"
+        android:textStyle="normal|bold"
+        android:layout_alignBaseline="@+id/euroTxt"
+        android:layout_alignBottom="@+id/euroTxt"
         android:layout_alignStart="@+id/submitBtn" />
 
 

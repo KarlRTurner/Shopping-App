@@ -15,7 +15,7 @@
         <ayy.shopping.textreading.ui.camera.GraphicOverlay
             android:id="@+id/graphicOverlay"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"/>
 
     </ayy.shopping.textreading.ui.camera.CameraSourcePreview>
 
@@ -29,13 +29,12 @@
         <Button
             android:id="@+id/enterAmount"
             android:text="Tap To Enter Amount"
-            android:background="#fcfc00"
+            android:background="@color/colorPrimary"
             android:textColor="@android:color/black"
             android:textSize="24sp"
             android:layout_height="50dp"
             android:layout_gravity="top"
-            android:layout_width="400dp"
-            android:layout_weight="1" />
+            android:layout_width="match_parent"/>
 
         <ImageButton
             android:layout_width="wrap_content"

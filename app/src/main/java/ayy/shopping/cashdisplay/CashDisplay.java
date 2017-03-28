@@ -65,7 +65,7 @@ public class CashDisplay extends FragmentActivity {
         }
 
 
-        ((TextView) findViewById(R.id.payable)).setText(euro + "." + cent);
+        //((TextView) findViewById(R.id.payable)).setText(euro + "." + cent);
 
 
 
