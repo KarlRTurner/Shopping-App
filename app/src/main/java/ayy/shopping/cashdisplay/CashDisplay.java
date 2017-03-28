@@ -48,9 +48,11 @@ public class CashDisplay extends FragmentActivity {
 
         cash = new ArrayList<>();
 
+        int euro;
+        int cent=0;
         Intent intent = getIntent();
-        int euro = Integer.parseInt(intent.getStringExtra("euromsg"));
-        int cent = Integer.parseInt(intent.getStringExtra("centmsg"));
+        euro = intent.getIntExtra("euromsg", 0);
+        cent = intent.getIntExtra("centmsg", 0);
 
         if (euro < 5 ){
             cash.add(5f);
@@ -63,7 +65,7 @@ public class CashDisplay extends FragmentActivity {
         }
 
 
-        //((TextView) findViewById(R.id.payable)).setText(euro + "." + cent);
+        ((TextView) findViewById(R.id.payable)).setText(euro + "." + cent);
 
 
 

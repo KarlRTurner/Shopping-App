@@ -71,6 +71,33 @@ public class EnterAmountActivity extends AppCompatActivity {
             }
         });
 
+        submitBtn = (Button)findViewById(R.id.submitBtn);
+        submitBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String euroStr = euroTxt.getText().toString();
+                String centStr = centTxt.getText().toString();
+                if (euroStr.matches("")){
+                    //Text to speech on button press
+                    tts = new TextToSpeech(EnterAmountActivity.this, new TextToSpeech.OnInitListener() {
+                        @Override
+                        public void onInit(int status) {
+                            //Instead of using the text in the button we are using our own message
+                            tts.speak("You Did not enter anything", TextToSpeech.QUEUE_FLUSH, null);
+                        }
+                    });
+                }
+                else {
+                    Intent intent  = new Intent(EnterAmountActivity.this, CashDisplay.class);
+                    int euro = Integer.parseInt(euroStr);
+                    int cent = Integer.parseInt(centStr);
+                    intent.putExtra("euromsg", euro);
+                    intent.putExtra("centmsg", cent);
+                    startActivity(intent);
+                }
+            }
+        });
+
         /**
          * This allows the camera button to be pressed which will bring the user back to
          * the previous screen so they can take a picture of their total.
@@ -160,15 +187,6 @@ public class EnterAmountActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 btnToOpenMic();
-            }
-        });
-
-        Button button = (Button)findViewById(R.id.submitBtn);
-        button.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
-                Intent i = new Intent(EnterAmountActivity.this , CashDisplay.class);
-
-                startActivity(i);
             }
         });
 

@@ -390,10 +390,12 @@ public final class OcrCaptureActivity extends AppCompatActivity {
                 String message = text.getValue();
 
                 String[] parts = message.split("\\.");
-                String euro = parts[0];
-                String cent = parts[1];
+                String euroStr = parts[0];
+                String centStr = parts[1];
 
                 Intent intent  = new Intent(this, CashDisplay.class);
+                int euro = Integer.parseInt(euroStr);
+                int cent = Integer.parseInt(centStr);
                 intent.putExtra("euromsg", euro);
                 intent.putExtra("centmsg", cent);
                 startActivity(intent);
