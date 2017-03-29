@@ -159,9 +159,9 @@ public final class OcrCaptureActivity extends AppCompatActivity {
         ImageButton button = (ImageButton) findViewById(R.id.captureBtn);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(OcrCaptureActivity.this, CashDisplay.class);
+                //Intent i = new Intent(OcrCaptureActivity.this, CashDisplay.class);
 
-                startActivity(i);
+                //startActivity(i);
             }
         });
 
