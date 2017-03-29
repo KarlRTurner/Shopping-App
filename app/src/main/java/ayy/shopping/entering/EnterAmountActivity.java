@@ -89,10 +89,15 @@ public class EnterAmountActivity extends AppCompatActivity {
                     });
                 } else {
                     Intent intent = new Intent(EnterAmountActivity.this, CashDisplay.class);
-                    int euro = Integer.parseInt(euroStr);
+
+                    /*int euro = Integer.parseInt(euroStr);
                     int cent = Integer.parseInt(centStr);
                     intent.putExtra("euromsg", euro);
-                    intent.putExtra("centmsg", cent);
+                    intent.putExtra("centmsg", cent);*/
+
+                    String tString = euroStr + "." + centStr;
+                    float total = Float.parseFloat(tString);
+                    intent.putExtra("totalmsg", total);
                     startActivity(intent);
                 }
             }

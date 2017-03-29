@@ -58,8 +58,7 @@ public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
             TextBlock item = items.valueAt(i);
             if (item != null && item.getValue() != null) {
                 Log.d("OcrDetectorProcessor", "Text detected! " + item.getValue());
-                //Intent intent  = new Intent(con, MoneyDisplay.class);
-                //con.startActivity(intent);
+
 
             }
             OcrGraphic graphic = new OcrGraphic(mGraphicOverlay, item);

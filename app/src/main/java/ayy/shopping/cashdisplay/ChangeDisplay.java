@@ -1,5 +1,6 @@
 package ayy.shopping.cashdisplay;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -43,8 +44,13 @@ public class ChangeDisplay extends FragmentActivity {
 
         cash = new ArrayList<>();
 
+        Intent intent = getIntent();
+        float chnge = intent.getFloatExtra("changemsg", 0.0f);
 
-        String myChange = "26.65";  // Hard coded change value
+
+
+
+        String myChange = String.valueOf(chnge);
         String[] convert = myChange.split("\\.");   // Splits the change into euro and cent integers
 
         int euro = Integer.parseInt(convert[0]);

@@ -86,7 +86,6 @@ public final class OcrCaptureActivity extends AppCompatActivity {
     // A TextToSpeech engine for speaking a String value.
     private TextToSpeech tts;
 
-    ////// Used to pass message to MoneyDisplay
     public final static String EXTRA_MESSAGE = "com.google.android.gms.samples.vision.ocrreader.MESSAGE";
 
     /**
@@ -390,15 +389,20 @@ public final class OcrCaptureActivity extends AppCompatActivity {
                 tts.speak(text.getValue(), TextToSpeech.QUEUE_ADD, null, "DEFAULT");
                 String message = text.getValue();
 
-                String[] parts = message.split("\\.");
+                float total =Float.parseFloat(message);
+
+                /*String[] parts = message.split("\\.");
                 String euroStr = parts[0];
                 String centStr = parts[1];
 
-                Intent intent = new Intent(this, CashDisplay.class);
+
                 int euro = Integer.parseInt(euroStr);
                 int cent = Integer.parseInt(centStr);
                 intent.putExtra("euromsg", euro);
-                intent.putExtra("centmsg", cent);
+                intent.putExtra("centmsg", cent);*/
+
+                Intent intent = new Intent(this, CashDisplay.class);
+                intent.putExtra("totalmsg", total);
                 startActivity(intent);
             } else {
                 Log.d(TAG, "text data is null");
