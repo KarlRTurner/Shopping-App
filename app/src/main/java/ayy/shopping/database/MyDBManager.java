@@ -17,7 +17,8 @@ public class MyDBManager {
     // These are the names of the columns the table will contain
     private static final String KEY_VALUE = "Value";
     private static final String KEY_QUANTITY = "Quantity";
-    private static final String KEY_DENOMINATION = "Denomination";;
+    private static final String KEY_DENOMINATION = "Denomination";
+    ;
 
     private static final String DATABASE_NAME = "Database";
     private static final String WALLET_TABLE = "Wallet";
@@ -32,7 +33,7 @@ public class MyDBManager {
             CURRENCY_TABLE + "(" +
             KEY_DENOMINATION + " text not null primary key, " +
             KEY_VALUE + "real not null, " +
-            " FOREIGN KEY ("+KEY_VALUE+") REFERENCES "+ WALLET_TABLE +"("+KEY_VALUE+"));";
+            " FOREIGN KEY (" + KEY_VALUE + ") REFERENCES " + WALLET_TABLE + "(" + KEY_VALUE + "));";
 
     private final Context context;
 

@@ -15,7 +15,7 @@ import ayy.shopping.R;
 
 // Instances of this class are fragments representing a single
 // object in our collection.
-public  class CashFragment extends Fragment {
+public class CashFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater,

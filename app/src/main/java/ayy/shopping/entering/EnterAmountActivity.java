@@ -4,18 +4,15 @@ import android.content.ActivityNotFoundException;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.speech.RecognizerIntent;
 import android.speech.tts.TextToSpeech;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -46,22 +43,22 @@ public class EnterAmountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_enter_amount);
 
 
-
-        euroTxt = (EditText)findViewById(R.id.euroTxt);
-        centTxt = (EditText)findViewById(R.id.centTxt);
+        euroTxt = (EditText) findViewById(R.id.euroTxt);
+        centTxt = (EditText) findViewById(R.id.centTxt);
         centTxt.setPaintFlags(centTxt.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
         euroTxt.setPaintFlags(euroTxt.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
 
         //This lets the user press the enter amount button and it will let the user know
         //Exactly what they have to do with audio
-        enterAmount2 = (Button)findViewById(R.id.enterAmount2);
+        enterAmount2 = (Button) findViewById(R.id.enterAmount2);
         enterAmount2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Text to speech on button press
                 tts = new TextToSpeech(EnterAmountActivity.this, new TextToSpeech.OnInitListener() {
                     //Getting text from the button and storing it in s
-                    String s=enterAmount2.getText().toString();
+                    String s = enterAmount2.getText().toString();
+
                     @Override
                     public void onInit(int status) {
                         //Instead of using the text in the button we are using our own message
@@ -71,24 +68,27 @@ public class EnterAmountActivity extends AppCompatActivity {
             }
         });
 
-        submitBtn = (Button)findViewById(R.id.submitBtn);
+        /**
+         * Submit button to submit input to CashDisplay
+         * it checks if data has been entered, if no data has been entered it will say nothing
+         * has been entered, if there has been data it will send the data to CashDisplay**/
+        submitBtn = (Button) findViewById(R.id.submitBtn);
         submitBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String euroStr = euroTxt.getText().toString();
                 String centStr = centTxt.getText().toString();
-                if (euroStr.matches("")){
+                if (euroStr.isEmpty() || centStr.isEmpty()) {
                     //Text to speech on button press
                     tts = new TextToSpeech(EnterAmountActivity.this, new TextToSpeech.OnInitListener() {
                         @Override
                         public void onInit(int status) {
                             //Instead of using the text in the button we are using our own message
-                            tts.speak("You Did not enter anything", TextToSpeech.QUEUE_FLUSH, null);
+                            tts.speak("Please enter euro and cents", TextToSpeech.QUEUE_FLUSH, null);
                         }
                     });
-                }
-                else {
-                    Intent intent  = new Intent(EnterAmountActivity.this, CashDisplay.class);
+                } else {
+                    Intent intent = new Intent(EnterAmountActivity.this, CashDisplay.class);
                     int euro = Integer.parseInt(euroStr);
                     int cent = Integer.parseInt(centStr);
                     intent.putExtra("euromsg", euro);
@@ -111,7 +111,8 @@ public class EnterAmountActivity extends AppCompatActivity {
                 //Text to speech on button press
                 tts = new TextToSpeech(EnterAmountActivity.this, new TextToSpeech.OnInitListener() {
                     //Getting text from the button and storing it in s
-                    String s=enterAmount2.getText().toString();
+                    String s = enterAmount2.getText().toString();
+
                     @Override
                     public void onInit(int status) {
                         //Instead of using the text in the button we are using our own message
@@ -131,7 +132,7 @@ public class EnterAmountActivity extends AppCompatActivity {
          * If the user presses no then it will just continue as normal.
          * If the user presses yes to delete the input then it will tts them saying the input
          * is being deleted. It will just open the same activity and kill the old one**/
-        clearBtn = (Button)findViewById(R.id.clearBtn);
+        clearBtn = (Button) findViewById(R.id.clearBtn);
         clearBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -140,6 +141,7 @@ public class EnterAmountActivity extends AppCompatActivity {
                 tts = new TextToSpeech(EnterAmountActivity.this,
                         new TextToSpeech.OnInitListener() {
                             String s2 = enterAmount2.getText().toString();
+
                             @Override
                             public void onInit(int status) {
                                 tts.speak("To delete Press Yes." +
@@ -160,12 +162,13 @@ public class EnterAmountActivity extends AppCompatActivity {
                                 //Speaking to the user to let them know the text has been cleared
                                 tts = new TextToSpeech(EnterAmountActivity.this,
                                         new TextToSpeech.OnInitListener() {
-                                    String s2 = enterAmount2.getText().toString();
-                                    @Override
-                                    public void onInit(int status) {
-                                        tts.speak("Deleting", TextToSpeech.QUEUE_FLUSH, null);
-                                    }
-                                });
+                                            String s2 = enterAmount2.getText().toString();
+
+                                            @Override
+                                            public void onInit(int status) {
+                                                tts.speak("Deleting", TextToSpeech.QUEUE_FLUSH, null);
+                                            }
+                                        });
                             }
                         })//end of yes button
                         //If the user presses no the dialog box will close
@@ -182,7 +185,7 @@ public class EnterAmountActivity extends AppCompatActivity {
         });//end of clearBtn listener
 
         //Speech To text
-        speakBtn = (ImageView)findViewById(R.id.speakBtn);
+        speakBtn = (ImageView) findViewById(R.id.speakBtn);
         speakBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -193,7 +196,7 @@ public class EnterAmountActivity extends AppCompatActivity {
     }//end of onCreate
 
     //Speech to Text method
-    private void btnToOpenMic(){
+    private void btnToOpenMic() {
         Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
 
@@ -201,9 +204,9 @@ public class EnterAmountActivity extends AppCompatActivity {
         intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Please Say Your Total");
 
 
-        try{
+        try {
             startActivityForResult(intent, REQ_CODE_SPEECH_OUTPUT);
-        }catch(ActivityNotFoundException tim){
+        } catch (ActivityNotFoundException tim) {
 
         }
     }
@@ -212,9 +215,9 @@ public class EnterAmountActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        switch(requestCode){
+        switch (requestCode) {
             case REQ_CODE_SPEECH_OUTPUT: {
-                if (requestCode == RESULT_OK && null != data){
+                if (requestCode == RESULT_OK && null != data) {
                     ArrayList<String> voiceInText = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
                     euroTxt.setText(voiceInText.get(0));
                 }

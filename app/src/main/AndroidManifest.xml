@@ -33,6 +33,10 @@
 
         <activity android:name=".entering.EnterAmountActivity"
             android:screenOrientation="portrait"/>
+
+        <activity android:name=".cashdisplay.ChangeDisplay"
+            android:screenOrientation="portrait">
+        </activity>
     </application>
 
 </manifest>

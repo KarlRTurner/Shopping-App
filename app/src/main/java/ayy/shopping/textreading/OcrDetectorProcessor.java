@@ -15,14 +15,14 @@
  */
 package ayy.shopping.textreading;
 
+import android.content.Context;
 import android.util.Log;
 import android.util.SparseArray;
 
-import ayy.shopping.textreading.ui.camera.GraphicOverlay;
 import com.google.android.gms.vision.Detector;
 import com.google.android.gms.vision.text.TextBlock;
 
-import android.content.Context;
+import ayy.shopping.textreading.ui.camera.GraphicOverlay;
 
 /**
  * A very simple Processor which gets detected TextBlocks and adds them to the overlay
@@ -38,8 +38,8 @@ public class OcrDetectorProcessor implements Detector.Processor<TextBlock> {
 
 
     Context con = null;
-    public OcrDetectorProcessor(Context context)
-    {
+
+    public OcrDetectorProcessor(Context context) {
         this.con = context;
     }
 
