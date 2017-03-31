@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -33,6 +34,9 @@ public class ChangeDisplay extends FragmentActivity {
 
         pics = new HashMap<>();
 
+        pics.put(0.05f, R.drawable.fivecent);
+        pics.put(0.10f, R.drawable.tencent);
+        pics.put(0.20f, R.drawable.twentycent);
         pics.put(0.50f, R.drawable.fiftycent);
         pics.put(1.0f, R.drawable.one);
         pics.put(2.0f, R.drawable.two);
@@ -47,12 +51,11 @@ public class ChangeDisplay extends FragmentActivity {
         Intent intent = getIntent();
         float chnge = intent.getFloatExtra("changemsg", 0.0f);
 
+        DecimalFormat df = new DecimalFormat("0.00");
 
+        String myChange = String.valueOf(df.format(chnge));
 
-
-        String myChange = String.valueOf(chnge);
         String[] convert = myChange.split("\\.");   // Splits the change into euro and cent integers
-
         int euro = Integer.parseInt(convert[0]);
         int cent = Integer.parseInt(convert[1]);
 
@@ -70,7 +73,10 @@ public class ChangeDisplay extends FragmentActivity {
                 euro -= num * coin[i];
 
                 float moneyValue = coin[i];
-                cash.add(moneyValue);
+                for( int j = 0; j < num; j++)
+                {
+                    cash.add(moneyValue);
+                }
             }
         }
         // Calculates least number of cent coins
@@ -79,13 +85,22 @@ public class ChangeDisplay extends FragmentActivity {
                 num2 = cent / cent_coin[i];
                 System.out.println(num2 + " x " + "0." + cent_coin[i] + "c");
                 cent -= num2 * cent_coin[i];
+
+                float centValue = (cent_coin[i]*0.01f);
+                //System.out.println("float cent val: " + centValue);
+
+                float cent_number = Float.parseFloat(df.format(centValue));
+                //System.out.println("The number is: " + number);
+
+                for( int j = 0; j < num2; j++)
+                {
+                    cash.add(cent_number);
+                }
+
+
             }
         }
-        /*
-        for(int j =0 ; j < 10 ; j++ ) {
-            cash.add(10f);
-        }
-        */
+
         mPagerAdapter = new ChangeDisplay.PagerAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setAdapter(mPagerAdapter);

@@ -93,7 +93,7 @@ public class MyDBManager {
 
 
     //---insert a person into the database---
-    public long insertPhoto(float val, int qty) {
+    public long insertWallet(float val, int qty) {
         ContentValues initialValues = new ContentValues();
         initialValues.put(KEY_VALUE, val);
         initialValues.put(KEY_QUANTITY, qty);
